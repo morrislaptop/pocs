@@ -14,13 +14,17 @@ class Signature extends AppModel
 		'email' => array(
 			'email' => array(
 				'rule' => 'email'
+			),
+			'specialUnique' => array(
+				'rule' => 'specialUnique',
+				'message' => 'This email address has already signed the petition'
 			)
 		),
 		'postcode' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty'
 			)
-		)
+		),
 	);
 	var $belongsTo = array(
 		'Mp'
@@ -40,6 +44,13 @@ class Signature extends AppModel
 		$this->actsAs['CampaignMonitor.Subscriber']['name'] = 'first_name';
 		$this->actsAs['CampaignMonitor.Subscriber']['CustomFields'] = array('last_name', 'postcode', 'not_in_australia');
 		parent::__construct($id, $table, $ds);
+	}
+	
+	function specialUnique($check) {
+		if ( Configure::read('Signatures.exceptionEmail') == $check['email'] ) {
+			return true;
+		}
+		return $this->isUnique($check);
 	}
 }
 ?>

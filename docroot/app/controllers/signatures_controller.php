@@ -102,7 +102,10 @@ class SignaturesController extends AppController {
 			$data['Signature']['personal_note'] = str_replace('Enter your personal message here..', '', $data['Signature']['personal_note']);
 			if ($this->Signature->save($data)) {
 				$this->_email($this->Signature->id, $bs['node']);
-				return true;
+				return array('success' => true);
+			}
+			else {
+				return array('success' => false, 'errors' => implode("\n", $this->Signature->validationErrors));
 			}
 		}
 	}
@@ -156,6 +159,11 @@ class SignaturesController extends AppController {
 		$keys[] = 'src="/';
 		$values[] = 'src="' . Router::url('/', true);
 		$email = str_replace($keys, $values, $template);
+		
+		// Attach message if its from the no reply email
+		if ( Configure::read('Signatures.exceptionEmail') == $signature['Signature']['email'] ) {
+			$email = '<p><strong>Please do not reply to this email, the person who sent this signature has used our temporary email address noreply@protectourcoralsea.org.au as they did not have their own email.</strong></p>' . $email;
+		}
 
 		// Set data
 		$this->set(compact('signature', 'letter', 'email'));

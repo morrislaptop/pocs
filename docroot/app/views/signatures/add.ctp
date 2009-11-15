@@ -74,7 +74,8 @@
 													'class' => 'errorField',
 													'notEmpty' => 'Please fill in this field',
 													'email' => 'Please enter a valid email address',
-													'phoneOrEmail' => 'Please enter a phone or an email address'
+													'phoneOrEmail' => 'Please enter a phone or an email address',
+													'specialUnique' => 'This email address has already signed the petition'
 												)
 											);
 											echo $form->input('first_name', $options);

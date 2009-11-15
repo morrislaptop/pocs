@@ -2,6 +2,7 @@
 	
 	import flash.display.MovieClip;
 	import flash.events.*;
+	import flash.text.*;
 
 	public class PageSignThanks extends MovieClip {
 		
@@ -20,8 +21,19 @@
 
 		// Public Methods:
 		public function add_Result(data:Object) {
-			Widget.pages.openPage("page_sign_thanks_mc");
-			counter_mc.init();
+			if ( data.success ) {
+				Widget.pages.openPage("page_sign_thanks_mc");
+				counter_mc.init();
+			}
+			else {
+				Widget.alert.show(data.errors);
+				Widget.pages.page_sign2_mc.send_mc.label = "TAKE ACTION NOW";
+				var format = new TextFormat();
+				format.size = 13;
+				Widget.pages.page_sign2_mc.send_mc.label_txt.setTextFormat(format);
+				Widget.pages.page_sign2_mc.send_mc.shadow_txt.setTextFormat(format);
+				Widget.pages.page_sign2_mc.send_mc.label_txt.y = Widget.pages.page_sign2_mc.send_mc.shadow_txt.y = 10;
+			}
 		}
 		
 		// Protected Methods:

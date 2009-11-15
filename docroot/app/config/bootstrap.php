@@ -69,6 +69,7 @@ Configure::write('Signatures.copy', 'monitor@waww.com.au,info@protectourcoralsea
 Configure::write('Signatures.subject', 'Protect Our Coral Sea Petition Signature');
 Configure::write('Signatures.pm_email', 'info@protectourcoralsea.org.au'); #'Griffith.eo@aph.gov.au');
 Configure::write('Signatures.mp_service_url', 'http://ml.net.au/findfed/?id=32457&code=%s');
+Configure::write('Signatures.exceptionEmail', 'noreply@protectourcoralsea.org.au');
 
 Configure::write('EcardItems.scopes', 'Images,Videos');
 
