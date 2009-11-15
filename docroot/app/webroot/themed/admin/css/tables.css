@@ -1,0 +1,145 @@
+/* tables */
+.index table {
+	width: 100%;
+	margin: 15px 0;
+}
+.index table th {
+	background:transparent url(../img/dark-table-head.gif) repeat-x scroll left top;
+	color:#42424C;
+	padding:11px 6px 10px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.index table th.headerLeft {
+	background:transparent url(../img/dark-table-head-left.gif) no-repeat scroll left top;
+	padding-left:11px;
+}
+.index table th.headerRight {
+	background:transparent url(../img/dark-table-head-right.gif) no-repeat scroll right top;
+	padding-right:11px;
+}
+.index table th a {
+	color: inherit;
+}
+.index table td {
+	border-bottom:1px solid #E9E9E9;
+	color:#4C4C4C;
+	padding:4px 6px;
+}
+.index table tr:last-child td {
+	border-bottom: none;
+}
+td.rowLeft {
+	padding-left:11px;
+}
+td.rowRight {
+	padding-right: 11px;
+}
+.index table tbody tr:hover td {
+	background-color: #FEFFE0;
+}
+.odd td {
+	background-color: #F9F9F9;
+}
+.index table td.footerLeft {
+	padding: 6px 0 6px 10px;
+	background: url(../img/table-footer-left.gif) no-repeat scroll left top;
+	border-bottom: none;
+	font-size: 11px;
+}
+.index table td.footerRight {
+	background: url(../img/table-footer-right.gif) no-repeat scroll right top;
+	padding: 0 10px 6px 0;
+	border-bottom: none;
+}
+.footerLeft span {
+	color: #D3D5D7;
+}
+.footerLeft a {
+	color: inherit;
+}
+
+/* Filter */
+.index .index td {
+	background: url(../img/table-tab-header.gif) repeat-x scroll left bottom;
+}
+.index .input, .index .submit {
+	margin: 0;
+	padding: 0;
+}
+.index label {
+	display: block;
+	float: left;
+	width: 50px;
+	font-weight: bold;
+}
+.index .text input, .index select {
+	border: 1px solid black;
+	border-color: #AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;
+	width: 100%;
+}
+.index input.calendar, .index input.range {
+	width: 70px;
+}
+.index table tr.filter td {
+	border-bottom: 1px solid black;
+}
+
+/* Paging */
+.show {
+	float: left;
+}
+div.paging {
+	float: left;
+}
+div.paging ul {
+	float: left;
+}
+div.paging li {
+	float:left;
+}
+.paging li.next a, .paging li.previous a {
+	background:transparent none repeat scroll 0 0;
+	border:medium none;
+	padding:2px 5px;
+}
+.paging a {
+	background:#FFFFFF none repeat scroll 0 0;
+	display:block;
+	float:left;
+	padding:1px 4px;
+	text-decoration:none;
+	-moz-border-radius-bottomleft:2px;
+	-moz-border-radius-bottomright:2px;
+	-moz-border-radius-topleft:2px;
+	-moz-border-radius-topright:2px;
+	border:1px solid #D7D7D7;
+	margin-right:3px;
+}
+div.paging div.disabled {
+	display: none;
+}
+.paging .current {
+	-moz-border-radius-bottomleft:2px;
+	-moz-border-radius-bottomright:2px;
+	-moz-border-radius-topleft:2px;
+	-moz-border-radius-topright:2px;
+	background:#9DA1A7 none repeat scroll 0 0;
+	color:#FFFFFF;
+	display:block;
+	float:left;
+	font-weight:bold;
+	margin-right:3px;
+	padding:2px 4px;
+}
+.paging li.dots {
+	color:#B6B8BB;
+	padding-right:3px;
+}
+.index .show select {
+	width: auto;
+	padding: 0;
+}
+.myDragClass td {
+	font-weight: bold;
+}

@@ -1,0 +1,375 @@
+@import url("../vendors/reset.css");
+
+/* Utility */
+.clear {
+	clear: both;
+}
+.padding {
+	padding: 1em;
+}
+.border, .uniForm.border {
+	border: 1px solid #3F819D;
+	padding: 20px 10px;
+	margin: 10px;
+}
+
+/* Background Image */
+#bg {
+	position:absolute; z-index:-1;
+	top: 0;
+	left: 0;
+}
+#bg img {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+html {overflow-y:hidden; position: relative;}
+body {overflow-y:auto; position: relative;}
+
+/* Layout */
+html, body {width:100%; height:100%;}
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    background: #05141c;
+}
+#container {
+	width: 990px;
+	margin: 0 auto;
+}
+
+/* Homepage */
+.home #content {
+}
+.home #content .hook.top {
+	background: url(../img/full_content_top_bg.png) no-repeat;
+	height: 49px;
+}
+.home #content .hook.middle {
+	padding: 10px 55px;
+	background: url(../img/full_content_middle_bg.png) repeat-y;
+}
+.home #content .hook.bottom {
+	background: url(../img/full_content_bottom_bg.png) no-repeat;
+	height: 49px;
+}
+
+.home #content .left {
+	float: left;
+	width: 370px;
+	height: 300px;
+}
+
+/* Referral View Page */
+.referral #content {
+}
+.referral #content .hook.top {
+	background: url(../img/full_content_top_bg.png) no-repeat;
+	height: 49px;
+}
+.referral #content .hook.middle {
+	padding: 10px 55px;
+	background: url(../img/full_content_middle_bg.png) repeat-y;
+}
+.referral #content .hook.bottom {
+	background: url(../img/full_content_bottom_bg.png) no-repeat;
+	height: 49px;
+}
+
+.referral #content .left {
+	float: left;
+	width: 545px;
+	padding-right: 30px;
+}
+
+/* Content Page */
+.content #content .left {
+	float: left;
+	width: 197px;
+	background: url(../img/side_bg.png) no-repeat top right;
+	min-height: 452px;
+}
+.content #content .left .hook {
+	padding: 27px 0px 0px 53px;
+}
+.content #content .right {
+	float: left;
+	width: 773px;
+}
+.content #content .right .hook.top {
+	background: url(../img/content_top_bg.png) no-repeat;
+	height: 29px;
+}
+.content #content .right .hook.middle {
+	background: url(../img/content_middle_bg.png) repeat-y;
+	padding: 11px 30px 14px 25px;
+}
+.content #content .right .hook.bottom {
+	background: url(../img/content_bottom_bg.png) no-repeat bottom left;
+	height: 14px;
+}
+.content #content .sidebar {
+	float: right;
+	width: 180px;
+	margin-left: 15px;
+}
+
+.content.full #content .right {
+	width: 990px;
+}
+.content.full #content .right .hook.top {
+	background: url(../img/full_content_top_bg.png) no-repeat;
+	height: 49px;
+}
+.content.full #content .right .hook.middle {
+	background: url(../img/full_content_middle_bg.png) repeat-y;
+	padding: 0px 50px 10px 50px;
+}
+.content.full #content .right .hook.bottom {
+	background: url(../img/full_content_bottom_bg.png) no-repeat bottom left;
+	height: 49px;
+}
+
+/* Sidebar */
+.sidenav {
+	width: 125px;
+}
+.sidenav li {
+	background: url(../img/arrow.png) no-repeat 0 5px;
+	padding: 3px 0 10px 15px;
+	font-weight: bold;
+	font-size: 14px;
+	border-bottom: 1px solid #7EB6E1;
+	margin: 8px 0;
+}
+.sidenav li li {
+	background: none;
+	padding: 10px 0 3px 10px;
+	border-bottom: none;
+	margin: 0;
+	font-size: 13px;
+}
+.sidenav li li a:hover {
+	color: #003366;
+}
+.sidenav a {
+	color: #fff;
+}
+.sidenav a:hover {
+	color: #ff9900;
+}
+
+/* Grid Page */
+.boxgrid{
+    width: 306px;
+    height: 140px;
+    float:left;
+    background:#161616;
+    border: 1px solid #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+.boxgrid:hover .boxcaption { color: #ff9900; }
+
+.boxgrid img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+}
+
+.boxgrid p{
+    padding: 0 10px;
+    color:#fff;
+    font-weight:bold;
+    margin:0;
+}
+
+.boxcaption {
+    color: #00ccff;
+    float: left;
+    position: absolute;
+    background: #111;
+    height: 100px;
+    width: 100%;
+    opacity: .7;
+    /* For IE 5-7 */
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    /* For IE 8 */
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+}
+
+.caption .boxcaption {
+    top: 120px;
+    left: 0;
+}
+
+.caption h3 { font-size: 10pt; padding: 2px; margin: 0; margin-left: 8px;}
+
+.grid #content {
+	width: 924px;
+	height: 420px;
+	margin: auto;
+}
+
+.grid #subcontent {
+    width: 990px;
+    height: 123px;
+    overflow: visible;
+    margin: auto;
+    background: transparent top center no-repeat url('../img/smallbg.png');
+}
+.grid #subcontent .hook {
+	padding: 40px;
+}
+.grid #subcontent img {
+	vertical-align: middle;
+	margin-right: 30px;
+}
+
+/* Gallery Image */
+.content #content .gallery {
+	float: right;
+	width: 793px;
+	margin-top: 15px;
+}
+.gallery .boxgrid {
+	width: 237px;
+}
+
+/* Footer */
+#footer {
+    height: 200px;
+    background: transparent top center no-repeat url('../img/footerbg.png');
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+}
+#footer .hook {
+	padding: 40px 55px;
+}
+
+#footer ul li {
+	float:left;
+	padding-right: 20px;
+	padding-left: 20px;
+	border-right: 1px solid #FFFFFF;
+}
+#footer ul li.last {
+	border-right: none;
+	padding-right: 0;
+}
+
+#footer .nav {
+	float: left;
+}
+
+#footer .sendMeUpdates {
+	float: right;
+	width: 285px;
+}
+
+#footer .sponsors {
+	position: absolute;
+	top: 75px;
+	left: 50px;
+}
+
+#footer #SubscriberEmail {
+	width: 192px;
+	height: 24px;
+	float: left;
+	margin-right: 10px;
+	padding: 4px;
+}
+
+#footer a {
+	color: #fff;
+}
+#footer a:hover {
+	color: #ff9900;
+}
+
+/* Top Navigation */
+#logo {
+	float:left;
+}
+#nav {
+	margin: auto;
+	height: 150px;
+	width: 920px;
+}
+#nav ul {
+	float:right;
+}
+#nav ul li {
+	float:left;
+	display: block;
+}
+#nav ul li a {
+	display: block;
+	float: left;
+	background: no-repeat -48px -48px;
+	height: 95px;
+	text-indent: -9999px;
+}
+#nav ul li a:hover, #nav ul li a.current, #nav ul li a.currentParent {
+	background-position:-48px -238px;
+}
+
+#nav ul li a.menuLink1 {
+	background-image: url("../img/home.png");
+	width: 145px;
+}
+#nav ul li a#about {
+	background-image: url("../img/about.png");
+	width: 78px;
+}
+#nav ul li a#who-we-are {
+	background-image: url("../img/who.png");
+	width: 101px;
+}
+#nav ul li a#act-now {
+	background-image: url("../img/act.png");
+	width: 103px;
+}
+#nav ul li a#news-media {
+	background-image: url("../img/news.png");
+	width: 132px;
+}
+#nav ul li a#contact-us {
+	background-image: url("../img/contact.png");
+	width: 126px;
+}
+
+/* Ecard Images */
+.ecardImage {
+	float: left;
+	text-align: center;
+}
+.ecardImage a {
+	padding: 5px 5px 5px 0;
+}
+.ecardImage.focused {
+	background: #FFFFDB;
+}
+.ecardImage input {
+	clear: left;
+	display: block;
+	margin: 0 auto;
+}
+
+/* Captions */
+.caption {
+	display:block;
+	font-size:10px;
+	text-align:center;
+}
+.captionWrap {
+	text-align: center;
+}

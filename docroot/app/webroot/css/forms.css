@@ -1,0 +1,66 @@
+@import url("../vendors/uni-form/css/uni-form.css");
+
+/* All Forms */
+.uniForm .focused {
+	background: none;
+}
+
+.uniForm .ctrlHolder {
+	border-bottom: none;
+}
+
+.uniForm label {
+	font-weight: bold;
+}
+.uniForm .inlineLabel {
+	font-weight: normal;
+}
+
+.uniForm .error label {
+	color: #f00;
+}
+
+.uniForm .errorField {
+	clear: both;
+	margin: 5px 0 0 0;
+	width: auto;
+	background: none;
+	padding: 0;
+}
+
+.uniForm .inlineLabels .errorField {
+}
+
+.uniForm .error {
+	background: none;
+	border: none;
+}
+
+.uniForm .buttonHolder {
+	padding: 7px;
+	text-align: left;
+}
+
+
+.uniForm .inlineLabels .buttonHolder {
+	padding-left: 47%;
+}
+
+.uniForm fieldset {
+	margin-bottom: 15px;
+}
+
+/* Signature Form */
+#SignatureAddForm .inlineLabels label, #SignatureAddForm .inlineLabels .label {
+	width: 30%;
+}
+#SignatureAddForm .buttonHolder {
+	padding-left: 32%;
+}
+
+.uniForm textarea, .uniForm textarea.textInput {
+	width: 100%;
+}
+.uniForm .inlineLabels textarea {
+	width: 45%;
+}

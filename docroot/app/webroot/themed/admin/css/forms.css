@@ -1,0 +1,68 @@
+form h1, form h2, form p {
+	padding-left: 7px;
+}
+.input, .submit {
+	margin-bottom: 8px;
+	padding: 7px;
+}
+
+.text input, .password input, select, textarea {
+	border: 2px solid #dfdfdf;
+	margin-right: 3px;
+	width: 300px;
+	padding: 2px;
+}
+
+select {
+	width: auto;
+}
+
+.required label {
+	font-weight: bold;
+}
+
+/* Layout */
+label {
+	display: block;
+	margin-bottom: 3px;
+}
+.grid label {
+	float: left;
+	width: 150px;
+}
+
+/* Checkboxes */
+.checkbox input {
+	vertical-align: middle;
+}
+.checkbox label {
+	display: inline;
+}
+.submit .checkbox {
+	display: inline;
+}
+
+/* Buttons */
+.submit {
+	text-align: right;
+}
+
+/* Focused */
+.focused {
+	background-color: #fffcdf;
+}
+.focused.text input, .focused.password input {
+	border-color: #DFD77D;
+}
+
+/* Errors */
+.error.text input, .error.password input, .error select {
+	border-color: #F77171;
+}
+.error-message {
+	color: #8D3F3F;
+}
+
+.index .filter select {
+	width: auto;
+}

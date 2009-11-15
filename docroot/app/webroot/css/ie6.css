@@ -1,0 +1,28 @@
+.content #content .right .hook.top, .home #content .hook.top {
+	background: none;
+	background-color: #022752;
+	border: 1px solid #516681;
+	border-bottom: none;
+}
+.content #content .right .hook.middle, .home #content .hook.middle {
+	background: none;
+	background-color: #022752;
+	border: 1px solid #516681;
+	border-bottom: none;
+	border-top: none;
+}
+.content #content .right .hook.bottom, .home #content .hook.bottom {
+	background: none;
+	background-color: #022752;
+	border: 1px solid #516681;
+	border-top: none;
+}
+#footer {
+	background: none;
+	background-color: #055C8C;
+	margin-top: 15px;
+}
+.grid #subcontent {
+	background: none;
+	background-color: #012451;
+}
