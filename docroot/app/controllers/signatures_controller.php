@@ -216,6 +216,12 @@ class SignaturesController extends AppController {
 		$count = $this->Signature->find('count');
 		return $count;
 	}
+	
+	function test_count() {
+		Configure::write('debug', 1);
+		$count = $this->Signature->find('count');
+		debug($count);
+	}
 
 	function admin_print($ids)
 	{

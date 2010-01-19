@@ -52,5 +52,39 @@ class Signature extends AppModel
 		}
 		return $this->isUnique($check);
 	}
+	
+	/**
+	* Override a basic count find to include that from Care2
+	* 
+	* @param mixed $conditions
+	* @param mixed $fields
+	* @param mixed $order
+	* @param mixed $recursive
+	* @return array
+	*/
+	function find($conditions = null, $fields = array(), $order = null, $recursive = null) {
+		if ( 'count' === $conditions && $fields === array() ) {
+			return $this->getCombinedCount();	
+		}
+		else {
+			return parent::find($conditions, $fields, $order, $recursive);
+		}
+	}
+	
+	function getCombinedCount() {
+		$ourDbCount = parent::find('count');
+		
+		$cached = Cache::read('Signatures.care2count');
+		if ( !$cached ) {
+			$rss = simplexml_load_file(Configure::read('Signatures.care2url'));
+			$guid = $rss->channel->item[0]->guid;
+			$fragment = parse_url($guid, PHP_URL_FRAGMENT);
+			$theirCount = intval(str_replace('signature', '', $fragment));
+			Cache::write('Signatures.care2count', $theirCount); // remember for next time
+			$cached = $theirCount;
+		}
+		
+		return $ourDbCount + $cached;
+	}
 }
 ?>
