@@ -137,5 +137,6 @@ pageTracker._trackPageview();
 <script src="http://static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">clicky.init(145989);</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="http://static.getclicky.com/145989ns.gif" /></p></noscript>
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 </body>
 </html>

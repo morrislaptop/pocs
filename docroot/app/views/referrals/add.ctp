@@ -30,6 +30,7 @@
 		)
 	);
 
+	$javascript->link('/vendors/flowplayer/example/flowplayer-3.1.4.min', false);
 	$javascript->link('/vendors/zeroclipboard/ZeroClipboard', false);
 	$javascript->codeBlock('
 		var clip = null;
@@ -42,6 +43,10 @@
 			$("#html").focus(function() {
 				this.select();
 			})
+
+			$(".ecardImage a").click(function() {
+				$(this).parent(".ecardImage").children("input").attr("checked", "checked");
+			});
 		});
 
 		function my_mouse_over() {
@@ -58,22 +63,31 @@
 		<div class="hook top"></div>
 		<div class="hook middle">
 			<?php echo $this->wysiwyg('Content'); ?>
-			<div class="clear"></div>
+            <div class="facebookShare">
+                <a href="http://www.facebook.com/sharer.php" name="fb_share" type="button_count" title="I just contacted my federal MP to Protect our Coral Sea, you can too" share_url="http://www.protectourcoralsea.org.au/act-now">Share</a>
+                <script type="text/javascript">// <![CDATA[
+                tweetmeme_style = 'compact';
+                // ]]></script>
+                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+            </div>
+            <div class="clear"></div>
 			<div style="float: left; width: 32%; " class="border">
 				<h2><?php __('Send a unique piece of the coral sea'); ?></h2>
 				<?php echo $form->create('Referral', array('class' => 'uniForm')); ?>
 					<fieldset>
 						<p><strong><?php __('Step 1: Choose an image'); ?></strong></p>
 						<?php
+							$value = !isset($this->data['Referral']['ecard_item_id']) ? $ecardImages[0]['EcardItem']['id'] : $this->data['Referral']['ecard_item_id'];
 							foreach ($ecardImages as $ecardItem)
 							{
 								?>
 								<div class="ecardImage">
 									<a href="#"><?php echo $html->image('/media/filter/s/' . $ecardItem['Image']['dirname'] . '/' . $ecardItem['Image']['basename']); ?></a>
-									<?php echo $form->radio('ecard_item_id', array($ecardItem['EcardItem']['id'] => '')); ?>
+									<?php echo $form->radio('ecard_item_id', array($ecardItem['EcardItem']['id'] => ''), compact('value')); ?>
 									<div class="clear"></div>
 								</div>
 								<?php
+								$checked = false;
 							}
 						?>
 						<div class="clear"></div>
@@ -83,10 +97,11 @@
 						<?php echo $form->input('message', am($options, array('label' => false))); ?>
 					</fieldset>
 					<fieldset>
-						<p><strong><?php __('Step 3: Sending Details'); ?></h3>
+						<p><strong><?php __('Step 3: Sending Details'); ?></strong></h3>
 						<?php
 							echo $form->input('your_name', $options);
 							echo $form->input('your_email', $options);
+							echo $form->input('friends_name', $options);
 							echo $form->input('friends_email', $options);
 						?>
 					</fieldset>
@@ -116,6 +131,7 @@
 						<?php
 							echo $form->input('your_name', $options);
 							echo $form->input('your_email', $options);
+							echo $form->input('friends_name', $options);
 							echo $form->input('friends_email', $options);
 						?>
 					</fieldset>
@@ -130,13 +146,12 @@
 								<div class="ecardImage" style="padding: 7px;">
 									<?php
 										$id = 'ecardVideo' . $ecardItem['EcardItem']['id'];
-										echo $html->div('ecardVideo', '', array('id' => $id));
+										$style = 'display: block; width: 240px; height: 240px;';
+										echo $html->link('', '/media/' . $ecardItem['Image']['dirname'] . '/' . $ecardItem['Image']['basename'], array('id' => $id, 'style' => $style));
 										echo $javascript->codeBlock('
-											var flashvars = {};
-											flashvars.file = "' . $html->url('/media/' . $ecardItem['Image']['dirname'] . '/' . $ecardItem['Image']['basename']) . '"
-											var params = {};
-											var attributes = {};
-											swfobject.embedSWF("' . $html->url('/vendors/mediaplayer/player.swf') . '", "' . $id . '", "240", "240", "9.0.0", false, flashvars, params, attributes);
+											$(function() {
+												flowplayer("' . $id . '", "' . $html->url('/vendors/flowplayer/flowplayer-3.1.3.swf') . '", { clip: { autoPlay: false, autoBuffering: false }});
+											})
 										', array('inline' => false));
 									?>
 									<?php echo $form->hidden('ecard_item_id', array('value' => $ecardItem['EcardItem']['id'])); ?>

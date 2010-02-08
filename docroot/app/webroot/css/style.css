@@ -278,6 +278,7 @@ body {
 	position: absolute;
 	top: 75px;
 	left: 50px;
+	font-size: 10px
 }
 
 #footer #SubscriberEmail {
@@ -290,6 +291,7 @@ body {
 
 #footer a {
 	color: #fff;
+	font-size: 10px;
 }
 #footer a:hover {
 	color: #ff9900;
@@ -372,4 +374,17 @@ body {
 }
 .captionWrap {
 	text-align: center;
+}
+
+/* Share Twitter */
+.facebookShare {
+    background:none repeat scroll 0 0 #FFFFFF;
+    border:1px solid #3F819D;
+    clear:both;
+    margin-left:185px;
+    padding:5px;
+    width:230px;
+}
+.facebookShare iframe {
+    float: right;
 }
