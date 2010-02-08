@@ -87,7 +87,8 @@
 											<p class="label">&nbsp;</p>
 											<div class="multiField" style="width: auto;">
 												<label class="inlineLabel" style="width: auto;">
-													<?php echo $form->checkbox('optin'); ?>
+													<?php /*echo $form->checkbox('optin'); */?>
+													<input type="hidden" name="data[Signature][optin]" id="SignatureOptin_" value="0" /><input type="checkbox" name="data[Signature][optin]" value="1" id="SignatureOptin"/>
 													<?php __('Please send me the Coral Sea newsletter'); ?>
 												</label>
 											</div>

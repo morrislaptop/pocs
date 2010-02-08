@@ -37,6 +37,6 @@
 <br />
 <div id="subcontent">
 	<div class="hook png">
-		<?php echo $this->wysiwyg('Sub Content'); ?>
+		<?php echo $snippets['How Can I Help']; ?>
 	</div>
 </div>

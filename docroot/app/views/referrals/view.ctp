@@ -1,5 +1,6 @@
 <?php
 	$this->viewVars['body'] = 'referral';
+	$javascript->link('/vendors/flowplayer/example/flowplayer-3.1.4.min', false);
 ?>
 <div id="content">
 	<div class="hook top"></div>
@@ -16,13 +17,12 @@
 	        		}
 	        		else {
 						$javascript->link('http://ajax.googleapis.com/ajax/libs/swfobject/2/swfobject.js', false);
-						echo $html->div('ecardVideo', '', array('id' => 'ecardVideo'));
+						$url = $html->url('/media/' . $referral['EcardItem']['Image']['dirname'] . '/' . $referral['EcardItem']['Image']['basename']);
+						echo $html->link('', $url, array('id' => 'ecardVideo', 'style' => 'display: block; width: 300px; height: 220px; float: right;'));
 						echo $javascript->codeBlock('
-							var flashvars = {};
-							flashvars.file = "' . $html->url('/media/' . $referral['EcardItem']['Image']['dirname'] . '/' . $referral['EcardItem']['Image']['basename']) . '"
-							var params = {};
-							var attributes = {};
-							swfobject.embedSWF("' . $html->url('/vendors/mediaplayer/player.swf') . '", "ecardVideo", "300", "220", "9.0.0", false, flashvars, params, attributes);
+							$(function() {
+								flowplayer("ecardVideo", "' . $html->url('/vendors/flowplayer/flowplayer-3.1.3.swf') . '", { clip: { autoPlay: false, autoBuffering: false }});
+							});
 						', array('inline' => false));
 	        		}
 	        	?>
@@ -31,4 +31,10 @@
 	    <div class="clear"></div>
 	</div>
 	<div class="hook bottom"></div>
+</div>
+<br />
+<div id="subcontent">
+	<div class="hook png">
+		<?php echo $snippets['How Can I Help']; ?>
+	</div>
 </div>
