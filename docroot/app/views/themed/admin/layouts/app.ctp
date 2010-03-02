@@ -30,7 +30,8 @@
 		            'Snippets' => array('plugin' => 'baked_simple', 'controller' => 'snippets'),
     			),
     			'Protect Our Coral Sea' => array(
-    				'Signatures' => array('controller' => 'signatures'),
+                    'Signatures' => array('controller' => 'signatures'),
+    				'Upload Signatures' => array('controller' => 'signatures', 'action' => 'upload'),
     				'Reports' => array('plugin' => 'reports', 'controller' => 'report_sqls'),
     				'eCard Items' => array('controller' => 'ecard_items'),
     				'Referrals' => array('controller' => 'referrals'),

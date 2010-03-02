@@ -3,6 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.events.*;
 	import flash.text.*;
+	import flash.net.*;
 
 	public class PageSignThanks extends MovieClip {
 		
@@ -44,6 +45,24 @@
 			
 			forward_mc.label = "Forward to Friends »";
 			forward_mc.addEventListener(MouseEvent.CLICK, onForwardClick);
+			
+			twitter_mc.buttonMode = true;
+			twitter_mc.addEventListener(MouseEvent.CLICK, onTwitterClick);
+			
+			facebook_mc.buttonMode = true;
+			facebook_mc.addEventListener(MouseEvent.CLICK, onFacebookClick);
+		}
+		
+		protected function onTwitterClick(me:MouseEvent) {
+			var url:String = "http://twitter.com/home?status=I just contacted my federal MP to Protect our Coral Sea, you can too: http://www.protectourcoralsea.org.au/act-now";
+			var r:URLRequest = new URLRequest(url);
+			navigateToURL(r, "_blank");
+		}
+		
+		protected function onFacebookClick(me:MouseEvent) {
+			var url:String = "http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.protectourcoralsea.org.au%2Fact-now&src=sp";
+			var r:URLRequest = new URLRequest(url);
+			navigateToURL(r, "_blank");
 		}
 		
 		protected function onEmbedClick(me:MouseEvent) {

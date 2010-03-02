@@ -72,7 +72,8 @@ class Signature extends AppModel
 	}
 	
 	function getCombinedCount() {
-		$ourDbCount = parent::find('count');
+        $conditions = "source != 'Care2' OR source IS NULL";
+		$ourDbCount = parent::find('count', compact('conditions'));
 		
 		$cached = Cache::read('Signatures.care2count');
 		if ( !$cached ) {

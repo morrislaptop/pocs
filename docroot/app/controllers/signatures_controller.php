@@ -187,6 +187,16 @@ class SignaturesController extends AppController {
 	}
 
 	function _getMps($postcode) {
+        
+        // try and find the postcode first.
+        // Get list of mps ordered by probablity.
+        $conditions = compact('postcode');
+        $order = 'probability DESC';
+        $mps = $this->Mp->find('all', compact('conditions', 'order'));
+        if ( $mps ) {
+            return $mps;
+        }
+        
 		$url = sprintf(Configure::read('Signatures.mp_service_url'), $postcode);
 		$content = file_get_contents($url);
 		$mps = array();
@@ -200,7 +210,7 @@ class SignaturesController extends AppController {
 
 			$conditions = compact('electorate', 'postcode');
 			$this->Mp->create();
-			if ( !($mp = $this->Mp->find('first', compact('conditions'))) ) {
+			if ( $email && !($mp = $this->Mp->find('first', compact('conditions'))) ) {
 				$this->Mp->save(compact('electorate', 'postcode', 'probability', 'name', 'email'));
 			}
 		}
@@ -300,6 +310,75 @@ class SignaturesController extends AppController {
 		}
 	}
 
+    function admin_upload() 
+    {
+        set_time_limit ( 0 );
+        
+        if ( !empty($this->data) ) 
+        {
+            // parseCSV does lots of magic to fill $csv->data
+            App::import('Vendor', 'advindex.parseCSV', array('file' => 'parsecsv-0.3.2' . DS . 'parsecsv.lib.php'));
+            $csv = new parseCSV();
+            $csv->parse($this->data['Signature']['file']['tmp_name']);
+            $bs = $this->BakedSimple->pull('/act-now/sign');
+            $created = 0;
+            $failed = 0;
+            $errors = array();
+
+            foreach ($csv->data as $line => $row)
+            {
+                // start again
+                $this->Signature->create();
+
+                // format row
+                $row = array_map('trim', $row);
+                
+                // get mp data (if AU, otherwise just ignore)
+                
+                $mps = $this->_getMps($row['Postcode']);
+                
+                // copy across.
+                $data = array(
+                    'Signature' => array(
+                        #mp_id see below
+                        'not_in_australia' => $row['Country'] != 'AU',
+                        'postcode' => $row['Postcode'],
+                        'first_name' => $row['First'],
+                        'last_name' => $row['Last'],
+                        'email' => $row['Email'],
+                        'personal_note' => $row['Comments'],
+                        'optin' => null,
+                        'source' => $this->data['Signature']['source'],
+                        'flash_url' => null,
+                        'country' => $row['Country'],
+                        'address' => $row['Address']
+                    )
+                );
+                
+                if ( $mps ) {
+                    $data['Signature']['mp_id'] = $mps[0]['Mp']['id'];
+                }
+
+                // Save
+                if ( !empty($data) ) 
+                {
+                    $this->Signature->create();
+                    if ($this->Signature->save($data)) {
+                        $this->_email($this->Signature->id, $bs['node']);
+                        $created++;
+                    }
+                    else {
+                        $failed++;
+                        $errors[$line] = $this->Signature->validationErrors;
+                    }
+                }
+            }
+            
+            // Return
+            $this->Session->write('Signatures.import', compact('created', 'failed', 'errors'));
+            $this->redirect(array('action' => 'upload'));
+        }
+    }
 	
 	function _setFormData() {
 		$sources = array('web' => 'web', 'flash' => 'flash');

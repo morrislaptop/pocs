@@ -26,6 +26,12 @@
  * @lastmodified  $Date: 2008-12-18 18:16:01 -0800 (Thu, 18 Dec 2008) $
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+ 
+if ( '/act' == $_SERVER['REQUEST_URI'] ) {
+    header("Location: /act-now");
+    exit;
+}
+ 
 /**
  * Here, we are connecting '/' (base path) to controller called 'Pages',
  * its action called 'display', and we pass a param to select the view file
